@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Gauss.MainPage">
+
+    <StackLayout>
+        <VerticalStackLayout
+            VerticalOptions="Start"
+            HorizontalOptions="CenterAndExpand">
+
+            <Grid 
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                HeightRequest="500">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="500" />
+                </Grid.RowDefinitions>
+
+                <VerticalStackLayout 
+                    HorizontalOptions="Start" 
+                    Grid.Column="0"
+                    Grid.Row="0">
+
+                    <Label
+                Text="Red : 0.2"              
+                HorizontalOptions="Start" x:Name="redLabel"/>
+                    <Slider Maximum="5" Minimum="0.2" Value="1"
+                ValueChanged="OnSliderValueChanged" x:Name="red" />
+
+                    <Label
+                Text="Green : 0.2"              
+                HorizontalOptions="Start" x:Name="greenLabel"/>
+                    <Slider Maximum="5" Minimum="0.2" Value="1"
+                ValueChanged="OnSliderValueChanged" x:Name="green"/>
+
+                    <Label
+                Text="Blue : 0.2"              
+                HorizontalOptions="Start" x:Name="blueLabel"/>
+                    <Slider Maximum="5" Minimum="0.2" Value="1"
+                ValueChanged="OnSliderValueChanged" x:Name="blue"/>
+
+                    <Label
+                Text="All : 0.2"              
+                HorizontalOptions="Start" x:Name="commonLabel"/>
+                    <Slider Maximum="5" Minimum="0.2" Value="1"
+                ValueChanged="OnCommonValueChanged" x:Name="common"/>
+
+                    <Entry 
+                        Keyboard="Numeric" 
+                        x:Name="GaussValue" 
+                        TextChanged="GaussValueChanged"
+                        Text="1">
+                        <Entry.Behaviors>
+                            <toolkit:NumericValidationBehavior 
+                                Flags="ValidateOnValueChanged"
+                                MinimumValue="0.2"
+                                MaximumValue="5.0"
+                                MaximumDecimalPlaces="2" />
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Button
+                x:Name="CounterBtn"
+                Text="Открыть фото"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Start" />
+
+                    <Button
+                x:Name="SaveBtn"
+                Text="Сохранить фото"
+                Clicked="OnSaveBtnClicked"
+                HorizontalOptions="Start" />
+
+                </VerticalStackLayout>
+
+                <VerticalStackLayout 
+                    HorizontalOptions="Center" 
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    VerticalOptions="Center"
+                    x:Name="ImageContainer">
+
+                    <Image
+                    x:Name="GaussImage"
+                    Source="dotnet_bot.png"
+                    SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                    HorizontalOptions="Center"
+                    Aspect="AspectFit"
+                    MaximumHeightRequest="500"
+                    MinimumHeightRequest="500"/>
+                </VerticalStackLayout>
+
+            </Grid>
+        </VerticalStackLayout>
+    </StackLayout>
+</ContentPage>
